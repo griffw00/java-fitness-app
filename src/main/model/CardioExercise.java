@@ -14,6 +14,7 @@ public class CardioExercise implements Exercise {
     }
 
     public String getExerciseName() {
+
         return this.exerciseName;
     }
 

@@ -75,6 +75,24 @@ class ScheduleTest {
     }
 
     @Test
+    void testAddDuplicate() {
+        // MONDAY SCHEDULE
+        testSchedule.addExercise(e1, DayType.MONDAY);
+        testSchedule.addExercise(e1, DayType.MONDAY);
+
+        // Can't add duplicate exercises for the same day
+        assertEquals(1, testSchedule.getExercises(DayType.MONDAY).size());
+        assertFalse(testSchedule.addExercise(e1, DayType.MONDAY));
+
+        //SUNDAY
+        testSchedule.addExercise(e1, DayType.SUNDAY);
+        testSchedule.addExercise(e1, DayType.SUNDAY);
+        assertEquals(1, testSchedule.getExercises(DayType.SUNDAY).size());
+        assertFalse(testSchedule.addExercise(e1, DayType.SUNDAY));
+
+    }
+
+    @Test
     void testRemoveExercise() {
         // MONDAY SCHEDULE
         testSchedule.addExercise(e1, DayType.MONDAY);
