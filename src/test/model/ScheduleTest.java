@@ -174,8 +174,15 @@ class ScheduleTest {
     }
 
     @Test
-    void ModifyCardioExercise(){
+    void ModifyCardioExercise() {
     }
+    /// in main app
+    /// when user selects exercise:
+    // if exercise instance WeightExercise
+    // prompt to give you duration
+    // if exercise instance of CardioExercise
+    // prompt them to give you reps and sets
+
 
     @Test
     void ModifyBodyWeightExercise(){}

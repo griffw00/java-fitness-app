@@ -22,4 +22,12 @@ public class CardioExercise implements Exercise {
 
         return this.duration;
     }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+//    public void modifyCardioExercise(DayType day, int duration){
+//        //stub
+//    }
 }
