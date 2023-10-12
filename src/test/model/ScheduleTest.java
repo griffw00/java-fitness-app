@@ -2,11 +2,6 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import model.CardioExercise;
-import model.BodyWeightExercise;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,12 +19,12 @@ class ScheduleTest {
     void runBefore() {
         testSchedule = new Schedule();
 
-        e1 = new CardioExercise("Running", 10);
-        e2 = new CardioExercise("Walking", 20);
-        e3 = new BodyWeightExercise("Push-ups", 3, 10);
-        e4 = new BodyWeightExercise("Sit-ups", 3, 20);
-        e5 = new BodyWeightExercise("Pull-ups", 3, 8);
-        e6 = new BodyWeightExercise("Jumping jacks", 5, 10);
+        e1 = new Exercise("Running", 0, 0, 10);
+        e2 = new Exercise("Walking", 0, 0, 20);
+        e3 = new Exercise("Push-ups", 3, 10, 0);
+        e4 = new Exercise("Sit-ups", 3, 20, 0);
+        e5 = new Exercise("Pull-ups", 3, 8, 0);
+        e6 = new Exercise("Jumping jacks", 5, 10, 0);
 
     }
 
