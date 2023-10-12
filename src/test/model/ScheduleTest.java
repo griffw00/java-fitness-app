@@ -19,12 +19,12 @@ class ScheduleTest {
     void runBefore() {
         testSchedule = new Schedule();
 
-        e1 = new Exercise("Running", 0, 0, 10);
-        e2 = new Exercise("Walking", 0, 0, 20);
-        e3 = new Exercise("Push-ups", 3, 10, 0);
-        e4 = new Exercise("Sit-ups", 3, 20, 0);
-        e5 = new Exercise("Pull-ups", 3, 8, 0);
-        e6 = new Exercise("Jumping jacks", 5, 10, 0);
+        e1 = new Exercise("running", 0, 0, 10);
+        e2 = new Exercise("walking", 0, 0, 20);
+        e3 = new Exercise("push ups", 3, 10, 0);
+        e4 = new Exercise("sit ups", 3, 20, 0);
+        e5 = new Exercise("pull ups", 3, 8, 0);
+        e6 = new Exercise("jumping jacks", 5, 10, 0);
 
     }
 
