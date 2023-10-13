@@ -54,10 +54,8 @@ public class Schedule {
         }
         if (!exerciseNames.contains(exercise.getExerciseName())) {
             exerciseList.add(exercise);
-            System.out.println("Exercise has been added to " + day + "!");
             return true;
         }
-        System.out.println("Exercise already added for " + day + "!");
         return false;
     }
 
@@ -71,10 +69,8 @@ public class Schedule {
         }
         if (exerciseNames.contains(exercise.getExerciseName())) {
             exerciseList.remove(exercise);
-            System.out.println("Exercise has been removed from " + day);
             return true;
         }
-        System.out.println("Exercise does not exist in " + day);
         return false;
     }
 
@@ -105,7 +101,6 @@ public class Schedule {
         List<Exercise> tempDay2 = getExercises(day2);
         setExercises(day1, tempDay2);
         setExercises(day2, tempDay1);
-        System.out.println(day1 + " exercises and " + day2 + " exercises have been swapped");
     }
 }
 
