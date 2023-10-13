@@ -52,6 +52,7 @@ public class FitnessApp {
         System.out.println("\tv -> View exercises");
         System.out.println("\tm -> Modify exercise");
         System.out.println("\ts -> Swap exercise days");
+        System.out.println("\tc -> Complete exercise");
         System.out.println("\tq -> Quit");
     }
 
@@ -69,6 +70,8 @@ public class FitnessApp {
             doModifyExercise();
         } else if (command.equals("s")) {
             doSwapExerciseDays();
+        } else if (command.equals("c")) {
+            doCompleteExercise();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -130,7 +133,7 @@ public class FitnessApp {
             String reps = (e.getReps() == 0) ? "N/A" : String.valueOf(e.getReps());
             String duration = (e.getDuration() == 0) ? "N/A" : String.valueOf(e.getDuration());
             System.out.println(e.getExerciseName() + "-> " + "sets:" + sets + " reps:" + reps + " "
-                    + "duration:" + duration);
+                    + "duration:" + duration + " completion status:" + e.getIsCompleted());
         }
     }
 
@@ -182,6 +185,26 @@ public class FitnessApp {
         displaySwapDay2Menu();
         DayType day2Input = translateStringToDay(input.nextInt());
         schedule.swapExerciseDays(day1Input, day2Input);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: marks the designated exercise as completed
+    private void doCompleteExercise() {
+        displayDayMenu();
+        DayType dayInput = translateStringToDay(input.nextInt());
+        System.out.println("Provide the name of the exercise you have completed");
+        String name = input.next();
+        boolean found = false;
+        for (Exercise e : schedule.getExercises(dayInput)) {
+            if (e.getExerciseName().equals(name)) {
+                e.setCompletionStatus(true);
+                found = true;
+                System.out.println("Good work!");
+            }
+            if (!found) {
+                System.out.println("Exercise does not exist!");
+            }
+        }
     }
 
     // REQUIRES: String must an integer from 1 to 7

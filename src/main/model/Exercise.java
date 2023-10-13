@@ -6,6 +6,7 @@ public class Exercise {
     private int sets;
     private int reps;
     private int duration;
+    private boolean isCompleted;
 
     // CONSTRUCTOR
     // EFFECT: Creates an exercise with sets, reps, and duration in minutes
@@ -16,6 +17,7 @@ public class Exercise {
         this.sets = sets;
         this.reps = reps;
         this.duration = duration;
+        this.isCompleted = false;
     }
 
     // EFFECT: returns the exercise name
@@ -38,6 +40,11 @@ public class Exercise {
         return duration;
     }
 
+    // EFFECT: returns the completion status of this exercise
+    public boolean getIsCompleted() {
+        return isCompleted;
+    }
+
     // MODIFIES: this
     // EFFECT: sets the reps of the exercise
     public void setReps(int reps) {
@@ -54,6 +61,12 @@ public class Exercise {
     // EFFECTS: sets the duration of the exercise
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the completion status of the exercise
+    public void setCompletionStatus(boolean status) {
+        this.isCompleted = status;
     }
 
 }

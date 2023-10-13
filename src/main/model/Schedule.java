@@ -57,7 +57,7 @@ public class Schedule {
             System.out.println("Exercise has been added to " + day + "!");
             return true;
         }
-        System.out.println("Exercise already added added for " + day + "!");
+        System.out.println("Exercise already added for " + day + "!");
         return false;
     }
 
