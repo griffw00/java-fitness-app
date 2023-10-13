@@ -64,6 +64,8 @@ class ScheduleTest {
         testList.add(e1);
         testList.add(e2);
         testList.add(e3);
+
+        //MONDAY
         testSchedule.setExercises(DayType.MONDAY, testList);
 
         assertEquals(3, testSchedule.getExercises(DayType.MONDAY).size());
@@ -71,6 +73,53 @@ class ScheduleTest {
         assertTrue(testSchedule.getExercises(DayType.MONDAY).contains(e2));
         assertTrue(testSchedule.getExercises(DayType.MONDAY).contains(e3));
 
+        //TUESDAY
+        testSchedule.setExercises(DayType.TUESDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.TUESDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.TUESDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.TUESDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.TUESDAY).contains(e3));
+
+        //WEDNESDAY
+        testSchedule.setExercises(DayType.WEDNESDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.WEDNESDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.WEDNESDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.WEDNESDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.WEDNESDAY).contains(e3));
+
+        //THURSDAY
+        testSchedule.setExercises(DayType.THURSDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.THURSDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.THURSDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.THURSDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.THURSDAY).contains(e3));
+
+        //FRIDAY
+        testSchedule.setExercises(DayType.FRIDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.FRIDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.FRIDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.FRIDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.FRIDAY).contains(e3));
+
+        //SATURDAY
+        testSchedule.setExercises(DayType.SATURDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.SATURDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.SATURDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.SATURDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.SATURDAY).contains(e3));
+
+        //SUNDAY
+        testSchedule.setExercises(DayType.SUNDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.SUNDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.SUNDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.SUNDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.SUNDAY).contains(e3));
     }
 
     @Test
