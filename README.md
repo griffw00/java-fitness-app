@@ -28,9 +28,6 @@ an application that is tailored for documenting my exercise plan.
 
 *etc.*
 
-*note: [] indicates whether or not the exercise has been done for that given day*
-
-
 
 # Task 3
 
@@ -40,7 +37,8 @@ an application that is tailored for documenting my exercise plan.
 - As a user, I want to be able to modify the intensity of my exercises for any given day of the week
 - As a user, I want to be able to swap the exercises between two days
 
-NOTE: I am no longer implementing the function to mark an exercise as completed
+NOTE: I am no longer implementing the function to mark an exercise as completed,
+instead I am allowing the user to swap exercises between two days. 
 
 An example of text with **bold** and *italic* fonts. 
 

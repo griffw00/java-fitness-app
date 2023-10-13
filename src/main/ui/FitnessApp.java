@@ -36,6 +36,7 @@ public class FitnessApp {
         System.out.println("\nGoodbye!");
     }
 
+    // EFFECTS: initializes a schedule and user input objects
     private void init() {
 
         schedule = new Schedule();
