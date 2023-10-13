@@ -109,16 +109,6 @@ public class Schedule {
     }
 }
 
-//    //MODIFIES: this
-//    //EFFECTS: modifies the duration of an existing cardio exercise
-//    public void modifyCardioExercise(String exerciseName, DayType day, int duration) {
-//        List<Exercise> exerciseList = getExercises(day);
-//        List<String> exerciseNames = new ArrayList<>();
-//        for (Exercise e: exerciseList) {
-//            if (exerciseName == e.getExerciseName()){
-//                e.setIntensity(duration);
-//            }
-//        }
-//    }
+
 
 

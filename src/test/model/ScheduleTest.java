@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import java.util.ArrayList;
 
 
 class ScheduleTest {
@@ -41,8 +43,38 @@ class ScheduleTest {
     }
 
     @Test
-    void testAddExercise() {
+    void testGetExercises() {
+        testSchedule.addExercise(e1, DayType.MONDAY);
+        testSchedule.addExercise(e2, DayType.MONDAY);
+        testSchedule.addExercise(e3, DayType.MONDAY);
 
+        List<Exercise> testList = new ArrayList<>();
+        testList.add(e1);
+        testList.add(e2);
+        testList.add(e3);
+
+        assertEquals(testList, testSchedule.getExercises(DayType.MONDAY));
+        assertEquals(3, testSchedule.getExercises(DayType.MONDAY).size());
+        assertEquals(0, testSchedule.getExercises(DayType.WEDNESDAY).size());
+    }
+
+    @Test
+    void testSetExercises() {
+        List<Exercise> testList = new ArrayList<>();
+        testList.add(e1);
+        testList.add(e2);
+        testList.add(e3);
+        testSchedule.setExercises(DayType.MONDAY, testList);
+
+        assertEquals(3, testSchedule.getExercises(DayType.MONDAY).size());
+        assertTrue(testSchedule.getExercises(DayType.MONDAY).contains(e1));
+        assertTrue(testSchedule.getExercises(DayType.MONDAY).contains(e2));
+        assertTrue(testSchedule.getExercises(DayType.MONDAY).contains(e3));
+
+    }
+
+    @Test
+    void testAddExercise() {
         // MONDAY SCHEDULE
         testSchedule.addExercise(e1, DayType.MONDAY);
         testSchedule.addExercise(e3, DayType.MONDAY);
@@ -114,7 +146,6 @@ class ScheduleTest {
 
     @Test
     void testSwapDiffDays() {
-
         testSchedule.addExercise(e1, DayType.MONDAY);
         testSchedule.addExercise(e2, DayType.TUESDAY);
 
