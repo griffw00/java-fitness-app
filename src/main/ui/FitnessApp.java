@@ -133,8 +133,10 @@ public class FitnessApp {
         }
     }
 
+
     // MODIFIES: this
     // EFFECTS: modifies a specific exercise for a given day
+    @SuppressWarnings("methodlength")
     private void doModifyExercise() {
         displayDayMenu();
         DayType dayInput = translateStringToDay(input.nextInt());
