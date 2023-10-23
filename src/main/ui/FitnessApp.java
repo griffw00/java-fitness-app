@@ -242,6 +242,7 @@ public class FitnessApp {
                 e.setCompletionStatus(true);
                 found = true;
                 System.out.println("Good work!");
+                break;
             }
             if (!found) {
                 System.out.println("Exercise does not exist!");

@@ -37,6 +37,8 @@ an application that is tailored for documenting my exercise plan.
 - As a user, I want to be able to modify the intensity of my exercises for any given day of the week
 - As a user, I want to be able to indicate the exercises I have completed
 - As a user, I want to be able to swap the exercises between two days
+- As a user, I want to be able to save my exercise schedule 
+- As a user, I want to be able to load my exercise schedule, if I so choose
 
 NOTE: I added one additional user story where the user can swap exercises 
 between two days 
