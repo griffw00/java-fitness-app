@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Schedule {
+public class Schedule implements Writable {
 
     private List<Exercise> monExercises;
     private List<Exercise> tueExercises;
@@ -101,6 +105,33 @@ public class Schedule {
         List<Exercise> tempDay2 = getExercises(day2);
         setExercises(day1, tempDay2);
         setExercises(day2, tempDay1);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+        // At this point, you should have a JSONArray that has a key-identifier of the day
+        // Each JSONArray contains multiple JSONObjects that are Exercises
+        jsonObject.put("monExercises", exercisesToJson(monExercises));
+        jsonObject.put("tueExercises", exercisesToJson(tueExercises));
+        jsonObject.put("wedExercises", exercisesToJson(wedExercises));
+        jsonObject.put("thuExercises", exercisesToJson(thuExercises));
+        jsonObject.put("friExercises", exercisesToJson(friExercises));
+        jsonObject.put("satExercises", exercisesToJson(satExercises));
+        jsonObject.put("sunExercises", exercisesToJson(sunExercises));
+
+        return jsonObject;
+    }
+
+    public JSONArray exercisesToJson(List<Exercise> exercises) {
+        JSONArray jsonArray = new JSONArray();
+
+        // Stores entire JSONObject of Exercise into the JSONArray for given day
+        for (Exercise e : exercises) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
     }
 }
 

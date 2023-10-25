@@ -1,6 +1,9 @@
 package model;
 
-public class Exercise {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Exercise implements Writable {
 
     private String exerciseName;
     private int sets;
@@ -69,4 +72,13 @@ public class Exercise {
         this.isCompleted = status;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("exerciseName", exerciseName);
+        json.put("duration", duration);
+        json.put("sets", sets);
+        json.put("reps", reps);
+        return json;
+    }
 }
