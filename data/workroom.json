@@ -1,0 +1,21 @@
+{
+    "monExercises": [{
+        "duration": 25,
+        "exerciseName": "running",
+        "reps": 0,
+        "sets": 0,
+        "isCompleted": false
+    }],
+    "thuExercises": [],
+    "tueExercises": [{
+        "duration": 0,
+        "exerciseName": "situps",
+        "reps": 25,
+        "sets": 2,
+        "isCompleted": false
+    }],
+    "satExercises": [],
+    "wedExercises": [],
+    "sunExercises": [],
+    "friExercises": []
+}

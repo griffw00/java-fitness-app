@@ -1,0 +1,32 @@
+{
+  "monExercises" : [
+    {
+      "exerciseName": "swimming",
+      "duration": 15,
+      "sets": 0,
+      "reps": 0,
+      "isCompleted": true
+    },
+    {
+      "exerciseName": "pushups",
+      "duration": 0,
+      "sets": 3,
+      "reps": 12,
+      "isCompleted": true
+    }
+  ],
+  "tueExercises": [],
+  "wedExercises": [],
+  "thuExercises": [],
+  "friExercises": [
+    {
+      "exerciseName": "running",
+      "duration": 10,
+      "sets": 0,
+      "reps": 0,
+      "isCompleted": false
+    }
+  ],
+  "satExercises": [],
+  "sunExercises": []
+}
