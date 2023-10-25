@@ -1,6 +1,11 @@
 package ui;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -8,6 +13,9 @@ import java.util.Scanner;
 public class FitnessApp {
     private Schedule schedule;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/workroom.json";
 
     // EFFECTS: runs the fitness schedule application
     public FitnessApp() {
@@ -36,12 +44,15 @@ public class FitnessApp {
         System.out.println("\nGoodbye!");
     }
 
-    // EFFECTS: initializes a schedule and user input objects
+    // EFFECTS: initializes a schedule, user input, and JSON objects
     private void init() {
 
         schedule = new Schedule();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: Displays the available schedule functions
@@ -53,6 +64,8 @@ public class FitnessApp {
         System.out.println("\tm -> Modify exercise");
         System.out.println("\ts -> Swap exercise days");
         System.out.println("\tc -> Complete exercise");
+        System.out.println("\tz -> Save exercises to file");
+        System.out.println("\tl -> Load exercises from file");
         System.out.println("\tq -> Quit");
     }
 
@@ -72,6 +85,10 @@ public class FitnessApp {
             doSwapExerciseDays();
         } else if (command.equals("c")) {
             doCompleteExercise();
+        } else if (command.equals("z")) {
+            saveSchedule();
+        } else if (command.equals("l")) {
+            loadSchedule();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -312,6 +329,29 @@ public class FitnessApp {
         System.out.println("\nCardio exercise or Bodyweight exercise?");
         System.out.println("\tc -> Cardio");
         System.out.println("\tb -> Bodyweight");
+    }
+
+    // EFFECTS: saves schedule to file
+    private void saveSchedule() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(schedule);
+            jsonWriter.close();
+            System.out.println("Saved schedule to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads Schedule from file
+    private void loadSchedule() {
+        try {
+            schedule = jsonReader.read();
+            System.out.println("Loaded schedule from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 }

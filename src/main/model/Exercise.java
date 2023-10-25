@@ -79,6 +79,7 @@ public class Exercise implements Writable {
         json.put("duration", duration);
         json.put("sets", sets);
         json.put("reps", reps);
+        json.put("isCompleted", isCompleted);
         return json;
     }
 }
