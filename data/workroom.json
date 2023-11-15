@@ -1,21 +1,30 @@
 {
-    "monExercises": [],
-    "thuExercises": [{
-        "duration": 35,
-        "exerciseName": "Walking",
-        "reps": 0,
-        "sets": 0,
-        "isCompleted": false
-    }],
+    "monExercises": [
+        {
+            "duration": 30,
+            "exerciseName": "Running",
+            "reps": 0,
+            "sets": 0,
+            "isCompleted": false
+        },
+        {
+            "duration": 0,
+            "exerciseName": "Pushups",
+            "reps": 12,
+            "sets": 3,
+            "isCompleted": false
+        }
+    ],
+    "thuExercises": [],
     "tueExercises": [],
     "satExercises": [],
     "wedExercises": [],
-    "sunExercises": [{
-        "duration": 25,
+    "sunExercises": [],
+    "friExercises": [{
+        "duration": 30,
         "exerciseName": "Running",
         "reps": 0,
         "sets": 0,
         "isCompleted": false
-    }],
-    "friExercises": []
+    }]
 }

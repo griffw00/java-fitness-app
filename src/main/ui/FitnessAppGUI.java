@@ -85,6 +85,28 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         updateTable();
     }
 
+    // EFFECTS: creates the required buttons
+    public void createButtons() {
+        addBodyWeightBtn = new JButton("Add Body Weight Exercise");
+        addBodyWeightBtn.setActionCommand("addBodyWeightButton");
+        addBodyWeightBtn.addActionListener(this);
+        addCardioBtn = new JButton("Add Cardio Exercise");
+        addCardioBtn.setActionCommand("addCardioButton");
+        addCardioBtn.addActionListener(this);
+        removeBtn = new JButton("Remove Exercise");
+        removeBtn.setActionCommand("removeButton");
+        removeBtn.addActionListener(this);
+        saveBtn = new JButton("Save");
+        saveBtn.setActionCommand("saveButton");
+        saveBtn.addActionListener(this);
+        loadBtn = new JButton("Load");
+        loadBtn.setActionCommand("loadButton");
+        loadBtn.addActionListener(this);
+        cleanBtn = new JButton("Clean");
+        cleanBtn.setActionCommand("cleanButton");
+        cleanBtn.addActionListener(this);
+    }
+
     public void updateTable() {
         String[] columnNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         DefaultTableModel tableModel = new DefaultTableModel(null, columnNames);
@@ -98,12 +120,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
                 for (Exercise exercise : exerciseList) {
                     Vector<Object> row = new Vector<>();
 
-                    // Add empty cells for days before the exercise's day
-                    for (DayType beforeDay : DayType.values()) {
-                        if (beforeDay.ordinal() < day.ordinal()) {
-                            row.add("");
-                        }
-                    }
+                    insertEmptyCells(day, row);
 
                     // Add the exercise data to the correct column
                     StringBuilder exercisesString = new StringBuilder();
@@ -129,27 +146,13 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         scheduleTable.setModel(tableModel);
     }
 
-
-    // EFFECTS: creates the required buttons
-    public void createButtons() {
-        addBodyWeightBtn = new JButton("Add Body Weight Exercise");
-        addBodyWeightBtn.setActionCommand("addBodyWeightButton");
-        addBodyWeightBtn.addActionListener(this);
-        addCardioBtn = new JButton("Add Cardio Exercise");
-        addCardioBtn.setActionCommand("addCardioButton");
-        addCardioBtn.addActionListener(this);
-        removeBtn = new JButton("Remove Exercise");
-        removeBtn.setActionCommand("removeButton");
-        removeBtn.addActionListener(this);
-        saveBtn = new JButton("Save");
-        saveBtn.setActionCommand("saveButton");
-        saveBtn.addActionListener(this);
-        loadBtn = new JButton("Load");
-        loadBtn.setActionCommand("loadButton");
-        loadBtn.addActionListener(this);
-        cleanBtn = new JButton("Clean");
-        loadBtn.setActionCommand("cleanButton");
-        loadBtn.addActionListener(this);
+    // EFFECTS: Add empty cells for days before the exercise's day
+    private static void insertEmptyCells(DayType day, Vector<Object> row) {
+        for (DayType beforeDay : DayType.values()) {
+            if (beforeDay.ordinal() < day.ordinal()) {
+                row.add("");
+            }
+        }
     }
 
     // EFFECTS: Handles button events
