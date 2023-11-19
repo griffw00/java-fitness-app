@@ -79,7 +79,7 @@ public class JsonReader {
         int sets = jsonObject.getInt("sets");
         int reps = jsonObject.getInt("reps");
         Boolean isCompleted = jsonObject.getBoolean("isCompleted");
-        Exercise exercise = new Exercise(exerciseName, duration, sets, reps);
+        Exercise exercise = new Exercise(exerciseName, sets, reps, duration);
         exercise.setCompletionStatus(isCompleted);
         return exercise;
     }
