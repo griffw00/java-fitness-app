@@ -14,9 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Vector;
 
 // import static jdk.javadoc.internal.doclets.toolkit.util.Utils.toLowerCase;
@@ -287,13 +285,14 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         }
     }
 
-    // EFFECTS: Handles clean button event
-    private void handleClean() {
-        for (int i = 1; i < tableModel.getRowCount(); i++) {
-            for (int j = 0; j < tableModel.getColumnCount(); j++) {
+    // EFFECTS: Cleans up the table to remove gaps
+    public void handleClean() {
+        for (int i = tableModel.getRowCount() - 1; i > 0; i--) {
+            for (int j = tableModel.getColumnCount() - 1; j >= 0; j--) {
                 if (tableModel.getValueAt(i, j) == null || tableModel.getValueAt(i, j).equals("")) {
+                    // If the cell is empty, move the value from the cell above it
                     tableModel.setValueAt(tableModel.getValueAt(i - 1, j), i, j);
-                    tableModel.setValueAt("", i - 1, j);
+                    tableModel.setValueAt("", i - 1, j);  // Clear the cell above
                 }
             }
         }
