@@ -37,7 +37,8 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/workroom.json";
 
-    private static final String[] COLUMN_NAMES = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private static final String[] COLUMN_NAMES = {"Monday", "Tuesday", "Wednesday", "Thursday",
+            "Friday", "Saturday", "Sunday"};
     private static final String EXERCISE_NAME_MESSAGE = "Name of Exercise";
     private static final String DURATION_MESSAGE = "Duration of exercise";
     private static final String SETS_MESSAGE = "Sets?";
@@ -217,7 +218,8 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
             schedule.removeExercise(exerciseToRemove, day);
             updateTable();
         } else {
-            JOptionPane.showMessageDialog(this, "Exercise not found on the specified day.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Exercise not found on the specified day.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
