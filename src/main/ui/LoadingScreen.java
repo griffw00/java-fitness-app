@@ -1,18 +1,18 @@
 package ui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+
 
 public class LoadingScreen extends JFrame {
 
+    // EFFECTS: Constructs a LoadingScreen object
     public LoadingScreen() {
         initializeUI();
     }
 
+    // EFFECTS: initializes the UI with appropriate customizations and JLabels
     private void initializeUI() {
         setTitle("Loading Screen");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,6 +33,7 @@ public class LoadingScreen extends JFrame {
 
 
 
+    // EFFECTS: Adds a image JLabel to the LoadingScreen
     private void addImageLabel() {
         // Load image from file
         ImageIcon originalIcon = new ImageIcon(getClass().getResource("/running_people.jpeg"));
@@ -42,7 +43,6 @@ public class LoadingScreen extends JFrame {
         Border border = BorderFactory.createLineBorder(new Color(255, 218, 185), 2);
         imageLabel.setBorder(border);
 
-
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -51,6 +51,7 @@ public class LoadingScreen extends JFrame {
     }
 
 
+    // EFFECTS: Adds a welcome message to the LoadingScreen
     private void addWelcomeLabel() {
         JLabel label = new JLabel("Welcome to JFit!", SwingConstants.CENTER);
         Font customFont = new Font("Arial", Font.PLAIN, 25);
@@ -63,6 +64,7 @@ public class LoadingScreen extends JFrame {
         add(label, gbc);
     }
 
+    // EFFECTS: Adds a start button to the LoadingScreen
     private void addStartButton() {
         JButton startButton = new JButton("Start Application");
         setForeground(Color.LIGHT_GRAY);
@@ -81,6 +83,7 @@ public class LoadingScreen extends JFrame {
         add(startButton, gbc);
     }
 
+    // EFFECTS: Adds a quit button to the LoadingScreen
     private void addQuitButton() {
         JButton quitButton = new JButton("Quit Application");
         setForeground(Color.LIGHT_GRAY);
