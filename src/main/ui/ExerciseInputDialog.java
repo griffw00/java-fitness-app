@@ -39,7 +39,10 @@ public class ExerciseInputDialog extends JDialog {
 
         okButton = new JButton("OK");
         addButtonToPanel(panel, okButton);
-        okButton.addActionListener(e -> { isConfirmed = true; dispose(); });
+        okButton.addActionListener(e -> {
+            isConfirmed = true;
+            dispose();
+        });
 
         getContentPane().add(panel);
         pack();
