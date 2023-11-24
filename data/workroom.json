@@ -20,8 +20,8 @@
     "friExercises": [{
         "duration": 0,
         "exerciseName": "Pushups",
-        "reps": 12,
-        "sets": 3,
+        "reps": 24,
+        "sets": 2,
         "isCompleted": false
     }]
 }

@@ -31,6 +31,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     private JButton saveBtn;
     private JButton loadBtn;
     private JButton cleanBtn;
+    private JButton modifyBtn;
 
     private Schedule schedule;
     private JsonWriter jsonWriter;
@@ -46,6 +47,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     private static final String DAY_MESSAGE = "Which Day?";
     private static final String REMOVE_EXERCISE_MESSAGE = "Name of Exercise to Remove:";
     private static final String ON_WHICH_DAY_MESSAGE = "On which day?";
+    private static final String EXERCISE_TYPE_MESSAGE = "Cardio or Bodyweight?";
 
     // EFFECTS: Constructs the FitnessAppGUI
     public FitnessAppGUI() {
@@ -84,6 +86,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         saveBtn = createButton("Save", "saveButton");
         loadBtn = createButton("Load", "loadButton");
         cleanBtn = createButton("Clean", "cleanButton");
+        modifyBtn = createButton("Modify Exercise", "modifyButton");
     }
 
     // EFFECTS: Creates a button
@@ -105,10 +108,11 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(addBodyWeightBtn);
         buttonPanel.add(addCardioBtn);
+        buttonPanel.add(modifyBtn);
         buttonPanel.add(removeBtn);
         buttonPanel.add(saveBtn);
         buttonPanel.add(loadBtn);
-        buttonPanel.add(cleanBtn);
+        // buttonPanel.add(cleanBtn); // clean button doesn't work
         return buttonPanel;
     }
 
@@ -171,6 +175,9 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
             case "removeButton":
                 handleRemove();
                 break;
+            case "modifyButton":
+                handleModify();
+                break;
             case "saveButton":
                 handleSave();
                 break;
@@ -203,6 +210,41 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         int reps = Integer.parseInt(bodyWeightOptions.showInputDialog(REPS_MESSAGE));
         Exercise exercise = new Exercise(exerciseName, sets, reps, 0);
         schedule.addExercise(exercise, day);
+        updateTable();
+    }
+
+    // EFFECTS: Handles the modify button event
+    private void handleModify() {
+        JOptionPane modifyOptions = new JOptionPane();
+        String exerciseType = modifyOptions.showInputDialog(EXERCISE_TYPE_MESSAGE);
+        if (exerciseType.toLowerCase().equals("cardio")) {
+            modifyCardio();
+        } else if (exerciseType.toLowerCase().equals("bodyweight")) {
+            modifyBodyWeight();
+        }
+    }
+
+    // EFFECTS: Modifies a cardio exercise
+    private void modifyCardio() {
+        JOptionPane cardioOptions = new JOptionPane();
+        DayType day = convertToDayType(cardioOptions.showInputDialog(DAY_MESSAGE));
+        String exerciseName = cardioOptions.showInputDialog(EXERCISE_NAME_MESSAGE);
+        int duration = Integer.parseInt(cardioOptions.showInputDialog(DURATION_MESSAGE));
+        Exercise exerciseTBD = findExercise(exerciseName, day);
+        exerciseTBD.setDuration(duration);
+        updateTable();
+    }
+
+    // EFFECTS: Modifies a bodyweight exercise
+    private void modifyBodyWeight() {
+        JOptionPane bodyWeightOptions = new JOptionPane();
+        DayType day = convertToDayType(bodyWeightOptions.showInputDialog(DAY_MESSAGE));
+        String exerciseName = bodyWeightOptions.showInputDialog(EXERCISE_NAME_MESSAGE);
+        int sets = Integer.parseInt(bodyWeightOptions.showInputDialog(SETS_MESSAGE));
+        int reps = Integer.parseInt(bodyWeightOptions.showInputDialog(REPS_MESSAGE));
+        Exercise exerciseTBD = findExercise(exerciseName, day);
+        exerciseTBD.setSets(sets);
+        exerciseTBD.setReps(reps);
         updateTable();
     }
 

@@ -46,3 +46,13 @@ between two days
 An example of text with **bold** and *italic* fonts. 
 
 ## A subtitle
+
+# Instructions for Grader
+
+- Please hit start application at the loading screen. 
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by hitting the add button. Please follow the instructions displayed in the JOptionPane.
+- You can generate the second required action related to the user story "removing X from Y" by hitting the remove button. Please follow the instructions displayed in the JOptionPane. 
+- Additionally, you can modify an exercise by hitting the Modify Exercise button. Please follow the instructions displayed in the JOptionPane. 
+- The visual component is displayed by default. All relevant exercises for each day is displayed. 
+- You can save the state of my application by hitting the save button. 
+- You can reload the state of my application by hitting the load button. 
