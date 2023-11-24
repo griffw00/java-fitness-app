@@ -1,14 +1,7 @@
 {
-    "monExercises": [{
-        "duration": 30,
-        "exerciseName": "Walking",
-        "reps": 0,
-        "sets": 0,
-        "isCompleted": false
-    }],
-    "thuExercises": [
+    "monExercises": [
         {
-            "duration": 35,
+            "duration": 30,
             "exerciseName": "Walking",
             "reps": 0,
             "sets": 0,
@@ -16,12 +9,19 @@
         },
         {
             "duration": 35,
-            "exerciseName": "Sprinting",
+            "exerciseName": "Running",
             "reps": 0,
             "sets": 0,
             "isCompleted": false
         }
     ],
+    "thuExercises": [{
+        "duration": 35,
+        "exerciseName": "Sprinting",
+        "reps": 0,
+        "sets": 0,
+        "isCompleted": false
+    }],
     "tueExercises": [],
     "satExercises": [{
         "duration": 25,

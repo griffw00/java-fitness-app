@@ -211,26 +211,26 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
 
     // EFFECTS: Handles cardio button event
     private void handleCardio() {
-        JOptionPane cardioOptions = new JOptionPane();
-        DayType day = convertToDayType(cardioOptions.showInputDialog(DAY_MESSAGE));
-        String exerciseName = cardioOptions.showInputDialog(EXERCISE_NAME_MESSAGE);
-        int duration = Integer.parseInt(cardioOptions.showInputDialog(DURATION_MESSAGE));
-        Exercise exercise = new Exercise(exerciseName, 0, 0, duration);
-        schedule.addExercise(exercise, day);
-        updateTable();
+        ExerciseInputDialog dialog = new ExerciseInputDialog(this, true);
+        if (dialog.showDialog()) {
+            DayType day = convertToDayType(JOptionPane.showInputDialog(DAY_MESSAGE));
+            Exercise exercise = new Exercise(dialog.getExerciseName(), 0, 0, dialog.getDuration());
+            schedule.addExercise(exercise, day);
+            updateTable();
+        }
     }
 
-    // EFFECTS: Handles bodyweight button event
+    // EFFECTS: Handles body weight button event
     private void handleBodyWeight() {
-        JOptionPane bodyWeightOptions = new JOptionPane();
-        DayType day = convertToDayType(bodyWeightOptions.showInputDialog(DAY_MESSAGE));
-        String exerciseName = bodyWeightOptions.showInputDialog(EXERCISE_NAME_MESSAGE);
-        int sets = Integer.parseInt(bodyWeightOptions.showInputDialog(SETS_MESSAGE));
-        int reps = Integer.parseInt(bodyWeightOptions.showInputDialog(REPS_MESSAGE));
-        Exercise exercise = new Exercise(exerciseName, sets, reps, 0);
-        schedule.addExercise(exercise, day);
-        updateTable();
+        ExerciseInputDialog dialog = new ExerciseInputDialog(this, false);
+        if (dialog.showDialog()) {
+            DayType day = convertToDayType(JOptionPane.showInputDialog(DAY_MESSAGE));
+            Exercise exercise = new Exercise(dialog.getExerciseName(), dialog.getSets(), dialog.getReps(), 0);
+            schedule.addExercise(exercise, day);
+            updateTable();
+        }
     }
+
 
     // EFFECTS: Handles the modify button event
     private void handleModify() {
