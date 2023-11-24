@@ -1,7 +1,11 @@
 package ui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class LoadingScreen extends JFrame {
 
@@ -14,7 +18,7 @@ public class LoadingScreen extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 600));
         setLayout(new GridBagLayout()); // Use GridBagLayout for better component placement
-        getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(new Color(253, 253, 253));
 
         addImageLabel();
         addWelcomeLabel();
@@ -27,19 +31,25 @@ public class LoadingScreen extends JFrame {
         setResizable(false);
     }
 
+
+
     private void addImageLabel() {
         // Load image from file
-        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/dumbbell.jpeg"));
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/running_people.jpeg"));
         ImageIcon resizedIcon = new ImageIcon(originalIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH));
         JLabel imageLabel = new JLabel(resizedIcon);
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        Border border = BorderFactory.createLineBorder(new Color(255, 218, 185), 2);
+        imageLabel.setBorder(border);
+
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weighty = 0.5;
+        gbc.weighty = 0.25;
         add(imageLabel, gbc);
     }
+
 
     private void addWelcomeLabel() {
         JLabel label = new JLabel("Welcome to JFit!", SwingConstants.CENTER);
@@ -57,7 +67,8 @@ public class LoadingScreen extends JFrame {
         JButton startButton = new JButton("Start Application");
         setForeground(Color.LIGHT_GRAY);
         startButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        Font customFont = new Font("Arial", Font.PLAIN, 14);
+        startButton.setPreferredSize(new Dimension(150, 20));
+        Font customFont = new Font("Arial", Font.PLAIN, 17);
         startButton.setFont(customFont);
         startButton.addActionListener(e -> {
             dispose();  // Close the loading screen
@@ -74,7 +85,8 @@ public class LoadingScreen extends JFrame {
         JButton quitButton = new JButton("Quit Application");
         setForeground(Color.LIGHT_GRAY);
         quitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        Font customFont = new Font("Arial", Font.PLAIN, 14);
+        quitButton.setPreferredSize(new Dimension(150, 20));
+        Font customFont = new Font("Arial", Font.PLAIN, 17);
         quitButton.setFont(customFont);
         quitButton.addActionListener(e -> System.exit(0));
         GridBagConstraints gbc = new GridBagConstraints();

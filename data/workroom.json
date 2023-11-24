@@ -6,10 +6,37 @@
         "sets": 0,
         "isCompleted": false
     }],
-    "thuExercises": [],
+    "thuExercises": [
+        {
+            "duration": 35,
+            "exerciseName": "Walking",
+            "reps": 0,
+            "sets": 0,
+            "isCompleted": false
+        },
+        {
+            "duration": 35,
+            "exerciseName": "Sprinting",
+            "reps": 0,
+            "sets": 0,
+            "isCompleted": false
+        }
+    ],
     "tueExercises": [],
-    "satExercises": [],
-    "wedExercises": [],
+    "satExercises": [{
+        "duration": 25,
+        "exerciseName": "Running",
+        "reps": 0,
+        "sets": 0,
+        "isCompleted": false
+    }],
+    "wedExercises": [{
+        "duration": 0,
+        "exerciseName": "Pushups",
+        "reps": 12,
+        "sets": 3,
+        "isCompleted": false
+    }],
     "sunExercises": [{
         "duration": 0,
         "exerciseName": "Running",

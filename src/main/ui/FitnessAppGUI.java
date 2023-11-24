@@ -30,7 +30,6 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     private JButton addCardioBtn;
     private JButton saveBtn;
     private JButton loadBtn;
-    private JButton cleanBtn;
     private JButton modifyBtn;
 
     private Schedule schedule;
@@ -85,7 +84,6 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         removeBtn = createButton("Remove Exercise", "removeButton");
         saveBtn = createButton("Save", "saveButton");
         loadBtn = createButton("Load", "loadButton");
-        cleanBtn = createButton("Clean", "cleanButton");
         modifyBtn = createButton("Modify Exercise", "modifyButton");
     }
 
@@ -112,7 +110,6 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         buttonPanel.add(removeBtn);
         buttonPanel.add(saveBtn);
         buttonPanel.add(loadBtn);
-        // buttonPanel.add(cleanBtn); // clean button doesn't work
         return buttonPanel;
     }
 
@@ -151,6 +148,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         }
 
         scheduleTable.setModel(tableModel);
+        clean();
     }
 
     // EFFECTS: Replaces empty cells in a row with ""
@@ -158,6 +156,30 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         for (DayType beforeDay : DayType.values()) {
             if (beforeDay.ordinal() < day.ordinal()) {
                 row.add("");
+            }
+        }
+    }
+
+    // EFFECTS: Cleans up the table to remove gaps
+    public void clean() {
+        for (int j = 0; j < tableModel.getColumnCount(); j++) {
+            int rowIndex = 0;  // Initialize rowIndex to the top of the column
+
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                Object value = tableModel.getValueAt(i, j);
+
+                if (value != null && !value.equals("")) {
+                    // If the cell is non-empty, move its value to the current rowIndex
+                    tableModel.setValueAt(value, rowIndex, j);
+
+                    // If the rowIndex is less than the current row index, clear the cell in the current row
+                    if (rowIndex < i) {
+                        tableModel.setValueAt("", i, j);
+                    }
+
+                    // Move to the next row in the column
+                    rowIndex++;
+                }
             }
         }
     }
@@ -183,9 +205,6 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
                 break;
             case "loadButton":
                 handleLoad();
-                break;
-            case "cleanButton":
-                handleClean();
                 break;
         }
     }
@@ -327,18 +346,5 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
-    }
-
-    // EFFECTS: Cleans up the table to remove gaps
-    public void handleClean() {
-//        for (int i = tableModel.getRowCount() - 1; i > 0; i--) {
-//            for (int j = tableModel.getColumnCount() - 1; j >= 0; j--) {
-//                if (tableModel.getValueAt(i, j) == null || tableModel.getValueAt(i, j).equals("")) {
-//                    // If the cell is empty, move the value from the cell above it
-//                    tableModel.setValueAt(tableModel.getValueAt(i - 1, j), i, j);
-//                    tableModel.setValueAt("", i - 1, j);  // Clear the cell above
-//                }
-//            }
-//        }
     }
 }
