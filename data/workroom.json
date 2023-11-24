@@ -23,13 +23,7 @@
         "isCompleted": false
     }],
     "tueExercises": [],
-    "satExercises": [{
-        "duration": 25,
-        "exerciseName": "Running",
-        "reps": 0,
-        "sets": 0,
-        "isCompleted": false
-    }],
+    "satExercises": [],
     "wedExercises": [{
         "duration": 0,
         "exerciseName": "Pushups",

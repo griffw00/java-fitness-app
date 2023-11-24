@@ -15,26 +15,28 @@ public class ExerciseInputDialog extends JDialog {
 
     private boolean isCardio;
 
+    // EFFECTS: Constructs an ExerciseInputDialog object
     public ExerciseInputDialog(JFrame parent, boolean isCardio) {
         super(parent, "Exercise Input", true);
         this.isCardio = isCardio;
         initialize();
     }
 
+    // EFFECTS: initializes with the input dialog
     private void initialize() {
         JPanel panel = new JPanel(new GridLayout(5, 2));
         nameField = new JTextField();
         initializeSliders();
 
-        addButtonToPanel(panel, "Name:", nameField);
+        addSliderToPanel(panel, "Name:", nameField);
         if (isCardio) {
             setsSlider.setVisible(false);
             repsSlider.setVisible(false);
-            addButtonToPanel(panel, "Duration (min):", durationSlider);
+            addSliderToPanel(panel, "Duration (min):", durationSlider);
         } else {
             durationSlider.setVisible(false);
-            addButtonToPanel(panel, "Sets:", setsSlider);
-            addButtonToPanel(panel, "Reps:", repsSlider);
+            addSliderToPanel(panel, "Sets:", setsSlider);
+            addSliderToPanel(panel, "Reps:", repsSlider);
         }
 
         okButton = new JButton("OK");
@@ -49,6 +51,7 @@ public class ExerciseInputDialog extends JDialog {
         setLocationRelativeTo(null);
     }
 
+    // EFFECTS: initializes sliders with ticks and labels
     private void initializeSliders() {
         setsSlider = new JSlider(0, 10);
         setsSlider.setMajorTickSpacing(5);
@@ -64,11 +67,13 @@ public class ExerciseInputDialog extends JDialog {
         durationSlider.setPaintLabels(true);
     }
 
-    private void addButtonToPanel(JPanel panel, String label, JComponent component) {
+    // EFFECTS: Adds cardio and body weight sliders to panel
+    private void addSliderToPanel(JPanel panel, String label, JComponent component) {
         panel.add(new JLabel(label));
         panel.add(component);
     }
 
+    // EFFECTS: Adds OK button to panel
     private void addButtonToPanel(JPanel panel, JButton button) {
         panel.add(button);
         panel.add(new JPanel());  // Empty panel for alignment
