@@ -216,7 +216,7 @@ public class FitnessApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: Modifies a bodyweight exercise on a given day
+    // EFFECTS: Modifies a body weight exercise on a given day
     private void modifyBodyWeightExercise(DayType dayInput) {
         System.out.println("Please provide the exact name of the exercise");
         String name = input.next();

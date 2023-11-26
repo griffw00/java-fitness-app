@@ -31,18 +31,25 @@ public class Schedule implements Writable {
     //EFFECTS: returns the exercise list for any given day of the week
     public List<Exercise> getExercises(DayType day) {
         if (day == DayType.MONDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Monday exercises"));
             return this.monExercises;
         } else if (day == DayType.TUESDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Tuesday exercises"));
             return this.tueExercises;
         } else if (day == DayType.WEDNESDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Wednesday exercises"));
             return this.wedExercises;
         } else if (day == DayType.THURSDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Thursday exercises"));
             return this.thuExercises;
         } else if (day == DayType.FRIDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Friday exercises"));
             return this.friExercises;
         } else if (day == DayType.SATURDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Saturday exercises"));
             return this.satExercises;
         } else if (day == DayType.SUNDAY) {
+            EventLog.getInstance().logEvent(new Event("Retrieving Sunday exercises"));
             return this.sunExercises;
         }
         return null;
@@ -58,6 +65,7 @@ public class Schedule implements Writable {
         }
         if (!exerciseNames.contains(exercise.getExerciseName())) {
             exerciseList.add(exercise);
+            EventLog.getInstance().logEvent(new Event("Adding " + exercise.getExerciseName() + " to " + day));
             return true;
         }
         return false;
@@ -73,6 +81,7 @@ public class Schedule implements Writable {
         }
         if (exerciseNames.contains(exercise.getExerciseName())) {
             exerciseList.remove(exercise);
+            EventLog.getInstance().logEvent(new Event("Removing " + exercise.getExerciseName() + " from " + day));
             return true;
         }
         return false;
@@ -105,6 +114,7 @@ public class Schedule implements Writable {
         List<Exercise> tempDay2 = getExercises(day2);
         setExercises(day1, tempDay2);
         setExercises(day2, tempDay1);
+        EventLog.getInstance().logEvent(new Event("Swapped exercise lists for " + day1 + " and " + day2));
     }
 
     @Override

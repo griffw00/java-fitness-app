@@ -1,5 +1,19 @@
 {
-    "monExercises": [
+    "monExercises": [{
+        "duration": 0,
+        "exerciseName": "Running",
+        "reps": 12,
+        "sets": 3,
+        "isCompleted": false
+    }],
+    "thuExercises": [{
+        "duration": 35,
+        "exerciseName": "Sprinting",
+        "reps": 0,
+        "sets": 0,
+        "isCompleted": false
+    }],
+    "tueExercises": [
         {
             "duration": 30,
             "exerciseName": "Walking",
@@ -15,14 +29,6 @@
             "isCompleted": false
         }
     ],
-    "thuExercises": [{
-        "duration": 35,
-        "exerciseName": "Sprinting",
-        "reps": 0,
-        "sets": 0,
-        "isCompleted": false
-    }],
-    "tueExercises": [],
     "satExercises": [],
     "wedExercises": [{
         "duration": 0,
@@ -33,9 +39,9 @@
     }],
     "sunExercises": [{
         "duration": 0,
-        "exerciseName": "Running",
-        "reps": 12,
-        "sets": 3,
+        "exerciseName": "jumping jacks",
+        "reps": 10,
+        "sets": 4,
         "isCompleted": false
     }],
     "friExercises": [{

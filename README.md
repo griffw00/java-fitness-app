@@ -56,3 +56,49 @@ An example of text with **bold** and *italic* fonts.
 - The visual component is displayed by default. All relevant exercises for each day is displayed. 
 - You can save the state of my application by hitting the save button. 
 - You can reload the state of my application by hitting the load button. 
+
+# Phase 4: Task 2
+- NOTE: I am first adding an exercise to Monday, and then removing that exercise from Monday. Following the addition of adding/removing an exercise, updateTable() is called which loops through each day in the schedule to create the JTable. Hence, there are many messages of "Retrieving exercises from x" printed to the console.
+- There are instances of "Retrieving exercises from x" before add/remove behaviour occur due to addExercise and removeExercise calling getExercise in their method bodies. 
+
+- Event Log:
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Monday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- **Adding Pushups to MONDAY**
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Monday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Tuesday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Wednesday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Thursday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Friday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Saturday exercises
+- Sun Nov 26 15:47:30 PST 2023
+- Retrieving Sunday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Monday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Monday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- **Removing Pushups from MONDAY**
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Monday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Tuesday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Wednesday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Thursday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Friday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Saturday exercises
+- Sun Nov 26 15:47:35 PST 2023
+- Retrieving Sunday exercises
+
+- Process finished with exit code 0

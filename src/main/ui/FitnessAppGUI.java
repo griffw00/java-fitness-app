@@ -1,6 +1,8 @@
 package ui;
 
 import model.DayType;
+import model.Event;
+import model.EventLog;
 import model.Exercise;
 import model.Schedule;
 import persistence.JsonReader;
@@ -10,14 +12,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
-
-// import static jdk.javadoc.internal.doclets.toolkit.util.Utils.toLowerCase;
 
 // CITATIONS: SimpleTableDemo.Java
 
@@ -31,12 +30,13 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     private JButton saveBtn;
     private JButton loadBtn;
     private JButton modifyBtn;
+    private JButton swapBtn;
 
     private Schedule schedule;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
-    private static final String JSON_STORE = "./data/workroom.json";
 
+    private static final String JSON_STORE = "./data/workroom.json";
     private static final String[] COLUMN_NAMES = {"Monday", "Tuesday", "Wednesday", "Thursday",
             "Friday", "Saturday", "Sunday"};
     private static final String EXERCISE_NAME_MESSAGE = "Name of Exercise";
@@ -65,7 +65,17 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         schedule = new Schedule();
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
+        // Create an abstract WindowAdapter, so it is not required
+        // to implement all methods in WindowListener
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printLog();
+            }
+        });
     }
+
+
 
     // EFFECTS: initializes the UI
     private void initializeUI() {
@@ -74,7 +84,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(new BorderLayout());
         createButtons();
-        updateTable();
+        //updateTable();
     }
 
     // EFFECTS: Creates the corresponding buttons for the UI
@@ -85,6 +95,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         saveBtn = createButton("Save", "saveButton");
         loadBtn = createButton("Load", "loadButton");
         modifyBtn = createButton("Modify Exercise", "modifyButton");
+        swapBtn = createButton("Swap", "swapButton");
     }
 
     // EFFECTS: Creates a button
@@ -108,6 +119,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         buttonPanel.add(addCardioBtn);
         buttonPanel.add(modifyBtn);
         buttonPanel.add(removeBtn);
+        buttonPanel.add(swapBtn);
         buttonPanel.add(saveBtn);
         buttonPanel.add(loadBtn);
         return buttonPanel;
@@ -200,6 +212,9 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
             case "modifyButton":
                 handleModify();
                 break;
+            case "swapButton":
+                handleSwap();
+                break;
             case "saveButton":
                 handleSave();
                 break;
@@ -236,9 +251,9 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     private void handleModify() {
         JOptionPane modifyOptions = new JOptionPane();
         String exerciseType = modifyOptions.showInputDialog(EXERCISE_TYPE_MESSAGE);
-        if (exerciseType.toLowerCase().equals("cardio")) {
+        if (exerciseType.equalsIgnoreCase("cardio")) {
             modifyCardio();
-        } else if (exerciseType.toLowerCase().equals("bodyweight")) {
+        } else if (exerciseType.equalsIgnoreCase("bodyweight")) {
             modifyBodyWeight();
         }
     }
@@ -267,6 +282,15 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
         updateTable();
     }
 
+    // EFFECTS: Swaps the exercise lists between two given days
+    private void handleSwap() {
+        JOptionPane swapOptions = new JOptionPane();
+        DayType day1 = convertToDayType(swapOptions.showInputDialog("First day to be swapped?"));
+        DayType day2 = convertToDayType(swapOptions.showInputDialog("Second day to be swapped?"));
+        schedule.swapExerciseDays(day1, day2);
+        updateTable();
+    }
+
     // EFFECTS: Handles remove button event
     private void handleRemove() {
         JOptionPane removeOptions = new JOptionPane();
@@ -288,7 +312,7 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
     // EFFECTS: converts the given string into a DayType
     public DayType convertToDayType(String day) {
         String lowerCaseDay = day.toLowerCase();
-        System.out.println(lowerCaseDay);
+        //System.out.println(lowerCaseDay);
 
         switch (lowerCaseDay) {
             case "monday":
@@ -345,6 +369,15 @@ public class FitnessAppGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "File loaded");
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    // EFFECTS: Prints the eventLog to the console
+    private void printLog() {
+        EventLog el = EventLog.getInstance();
+        System.out.println("Event Log:");
+        for (Event e : el) {
+            System.out.println(e);
         }
     }
 }
