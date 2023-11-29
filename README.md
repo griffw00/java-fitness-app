@@ -59,9 +59,10 @@ An example of text with **bold** and *italic* fonts.
 
 # Phase 4: Task 2
 - NOTE: I am first adding an exercise to Monday, and then removing that exercise from Monday. Following the addition of adding/removing an exercise, updateTable() is called which loops through each day in the schedule to create the JTable. Hence, there are many messages of "Retrieving exercises from x" printed to the console.
-- There are instances of "Retrieving exercises from x" before add/remove behaviour occur due to addExercise and removeExercise calling getExercise in their method bodies. 
-
-- Event Log:
+- There are instances of "Retrieving exercises from x" before add/remove behaviour occur due to addExercise and removeExercise calling getExercise in their method bodies.    
+<br>
+- Event Log:   
+<br>
 - Sun Nov 26 15:47:30 PST 2023
 - Retrieving Monday exercises
 - Sun Nov 26 15:47:30 PST 2023
@@ -102,3 +103,6 @@ An example of text with **bold** and *italic* fonts.
 - Retrieving Sunday exercises
 
 - Process finished with exit code 0
+- 
+# Phase 4: Task 3
+After creating my UML diagram, I realize that although JButton was one of my most used types, I never created a class for it. Instead, I opted to have multiple fields of type JButton. If I were to refactor the project, I would make a class that is dedicated for a Button. This would make sense because not only do I use buttons in my FitnessAppGUI class, I also use buttons in my ExerciseInputDialog class as well. Instantiating button objects instead of storing them in fields would reduce the coupling of the program. 
