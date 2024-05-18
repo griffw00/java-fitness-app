@@ -47,7 +47,7 @@ An example of text with **bold** and *italic* fonts.
 
 ## A subtitle
 
-# Instructions for Grader
+# Instructions for User
 
 - Please hit start application at the loading screen. 
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by hitting the add button. Please follow the instructions displayed in the JOptionPane.
