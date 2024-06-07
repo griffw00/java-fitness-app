@@ -1,3 +1,6 @@
+# Video Demo:  
+https://youtu.be/s-rwmlVxqO8
+
 # Task 1
 
 **Fitness Planner**
